@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:yuno123/yuno.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MaterialApp(
+    home: const MyApp(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -9,25 +13,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Column(
-          children: [
-            Expanded(
-              flex: 8,
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            flex: 8,
+            child: Container(
               child: Container(
-                child: Container(
-                  child: Image(
-                    image: AssetImage('images/snapchat1.jpg'),
-                  ),
+                child: Image(
+                  image: AssetImage('images/snapchat1.jpg'),
                 ),
-                width: double.infinity,
-                color: Color.fromRGBO(255, 252, 0, 1),
               ),
+              width: double.infinity,
+              color: Color.fromRGBO(255, 252, 0, 1),
             ),
-            Expanded(
-              flex: 1,
+          ),
+          Expanded(
+            flex: 1,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => home()));
+              },
               child: Container(
                 width: 1000,
                 color: Colors.red,
@@ -47,27 +54,27 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                width: 1000,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("SIGN UP",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontFamily: "Snapchat",
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 2.5))
-                  ],
-                ),
-                color: Colors.blue,
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              width: 1000,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("SIGN UP",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontFamily: "Snapchat",
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 2.5))
+                ],
               ),
-            )
-          ],
-        ),
+              color: Colors.blue,
+            ),
+          )
+        ],
       ),
     );
   }
